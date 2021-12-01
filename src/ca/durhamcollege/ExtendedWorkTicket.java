@@ -1,45 +1,114 @@
+/*
+ * Name: Arsalan Arif Radhu
+ * Date: 1 December 2021
+ * Description: ExtendedWorkTicket class is created
+ */
+
 package ca.durhamcollege;
+
+import java.time.LocalDate;
 
 public class ExtendedWorkTicket extends WorkTicket
 {
-    //Declaration
-    boolean myOpen;
+    //Private Instance Variables
+    public boolean myOpen;
 
-    //ACCESSOR
+    //Public Properties
 
-    //Returns open status
-    public boolean isOpen()
+    //Constructors
+    //Parameterized constructor using parameters from base class
+    public ExtendedWorkTicket(int ticketNumber, String id, LocalDate date, String description, boolean myOpen)
+    {
+        this.ticketNumber = ticketNumber;
+        this.id = id;
+        this.date = date;
+        this.description = description;
+        this.myOpen = myOpen;
+    }
+
+    //Default Constructor
+    public  ExtendedWorkTicket()
+    {
+        super();
+        openTicket();
+    }
+    //Parameterized Constructor using a Work ticket object
+    public ExtendedWorkTicket(WorkTicket ticket, boolean myOpen)
+    {
+        this.ticketNumber = ticket.ticketNumber;
+        this.id = ticket.id;
+        this.date = ticket.date;
+        this.description = ticket.description;
+        this.myOpen = myOpen;
+    }
+
+    //Private Methods
+
+    //Public Methods (Getters and Setters)
+    //myOpen getter
+    public boolean getOpen()
     {
         return myOpen;
     }
+    //myOpen setter
+    public void setOpen(boolean open)
+    {
+        myOpen = open;
+    }
 
-    //MUTATORS
-    // Opens Work Ticket
+    //Method to open a ticket
     public void openTicket()
     {
-        myOpen = true;
+        this.myOpen = true;
     }
 
-    //Closes Work Ticket
+    //Method to close a ticket
     public void closeTicket()
     {
-        myOpen = false;
+        this.myOpen = false;
     }
 
-    // SetWorkTicket()
-    public boolean SetWorkTicket(int ticketNumber, String clientId, int year, int month, int day, String issueDescription,
-                                 boolean myOpen)
+    //Method to return the status of the ticket
+    public String isOpen()
     {
-        boolean isValid = true;
+        String status = "";
 
-        if (myOpen != true)
+        if (myOpen == true)
         {
-            isValid = false;
+            status = "This ticket is open!";
         }
-        else {
-            super.SetWorkTicket();
-            this.myOpen = myOpen;
+        else
+        {
+            status = "This ticket is closed!";
         }
-        return isValid;
+
+        return status;
     }
+
+    //SetWorkTicket Override
+    public void SetWorkTicket()
+    {
+        setTicketNumber();
+        setId();
+        setDate();
+        setDescription();
+        openTicket();
+    }
+
+    // toString Override
+    public String toString()
+    {
+        String output = "";
+        output += "\n========================================\n";
+        output += "Ticket Number: " + (getTicketNumber()) + "\n";
+        output += "Ticket Date: " + getDate() + "\n";
+        output += "Ticket ID: " + getId() + "\n";
+        output += "Ticket Description: " + getDescription() + "\n";
+        output += "Ticket Status: " + isOpen() + "\n";
+        output += "========================================\n";
+
+        return output;
+    }
+
+
 }
