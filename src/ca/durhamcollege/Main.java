@@ -23,47 +23,49 @@ public class Main
         boolean isValid = true;
         LocalDate currentDate = LocalDate.now();
         int ticketNumber = 123;
-        String alphaCode = "F3g5cV";
+        String alphaCode = "AAA000";
         String desc = "Parameterized Ticket";
-        WorkTicket ticket0 = new WorkTicket(123344, "D43FvC", currentDate, "WorkTicket Construction");
-        ExtendedWorkTicket ticket = new ExtendedWorkTicket();
-        ExtendedWorkTicket ticket1 = new ExtendedWorkTicket(ticketNumber, alphaCode, currentDate, desc, test);
-        ExtendedWorkTicket ticket2 = new ExtendedWorkTicket(ticket0, test);
+        WorkTicket exampleTicket0 = new WorkTicket(101, "ABC123", currentDate, "WorkTicket Construction");
+        ExtendedWorkTicket exampleTicket = new ExtendedWorkTicket();
+        ExtendedWorkTicket exampleTicket1 = new ExtendedWorkTicket(ticketNumber, alphaCode, currentDate, desc, test);
+        ExtendedWorkTicket exampleTicket2 = new ExtendedWorkTicket(exampleTicket0, test);
 
         do
         {
             try
             {
+                //Printing example tickets
                 System.out.println("WorkTicket Parameterized Constructor");
-                System.out.println(ticket2.toString());
+                System.out.println(exampleTicket2.toString());
                 System.out.println("Parameterized Constructor");
-                System.out.println(ticket1.toString());
+                System.out.println(exampleTicket1.toString());
                 System.out.println("Default Constructor");
-                System.out.println(ticket.toString());
-                //Setting the ticket
-                ticket.SetWorkTicket();
-                System.out.println(ticket.toString());
+                System.out.println(exampleTicket.toString());
 
-                ticket.closeTicket();
-                System.out.println(ticket.toString());
+                //Setting the new ticket
+                exampleTicket.SetWorkTicket();
+                System.out.println(exampleTicket.toString());
+
+                exampleTicket.closeTicket();
+                System.out.println(exampleTicket.toString());
 
                 isValid = false;
             }
             catch(IllegalArgumentException iae)
             {
-                System.out.printf("\n INVALID: %s", iae.toString());
+                System.out.printf("\n Incorrect input: %s", iae.toString());
                 keyboard.nextLine();
                 isValid = true;
             }
             catch(InputMismatchException ime)
             {
-                System.out.print("\nINVALID: Your input was incorrect, try again.");
+                System.out.print("\nIncorrect input, please try again!");
                 keyboard.nextLine();
                 isValid = true;
             }
 
-        } while (isValid);
-
+        }
+        while (isValid);
     }
 
 }

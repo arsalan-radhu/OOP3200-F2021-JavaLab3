@@ -1,7 +1,7 @@
 /*
  * Name: Arsalan Arif Radhu
  * Date: 1 December 2021
- * Description: ExtendedWorkTicket class is created
+ * Description: ExtendedWorkTicket class is created from the WorkTicket
  */
 
 package ca.durhamcollege;
@@ -13,10 +13,8 @@ public class ExtendedWorkTicket extends WorkTicket
     //Private Instance Variables
     public boolean myOpen;
 
-    //Public Properties
-
     //Constructors
-    //Parameterized constructor using parameters from base class
+    //Parameterized Constructor
     public ExtendedWorkTicket(int ticketNumber, String id, LocalDate date, String description, boolean myOpen)
     {
         this.ticketNumber = ticketNumber;
@@ -50,25 +48,26 @@ public class ExtendedWorkTicket extends WorkTicket
     {
         return myOpen;
     }
+
     //myOpen setter
     public void setOpen(boolean open)
     {
         myOpen = open;
     }
 
-    //Method to open a ticket
+    //Method for opening a ticket
     public void openTicket()
     {
         this.myOpen = true;
     }
 
-    //Method to close a ticket
+    //Method for closing a ticket
     public void closeTicket()
     {
         this.myOpen = false;
     }
 
-    //Method to return the status of the ticket
+    //Method returning the status of the ticket
     public String isOpen()
     {
         String status = "";
@@ -109,6 +108,5 @@ public class ExtendedWorkTicket extends WorkTicket
 
         return output;
     }
-
 
 }
