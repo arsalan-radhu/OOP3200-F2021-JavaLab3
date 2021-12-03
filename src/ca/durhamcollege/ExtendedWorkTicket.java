@@ -1,5 +1,6 @@
 /*
  * Name: Arsalan Arif Radhu
+ * Student ID: 100813965
  * Date: 1 December 2021
  * Description: ExtendedWorkTicket class is created from the WorkTicket
  */
@@ -30,7 +31,8 @@ public class ExtendedWorkTicket extends WorkTicket
         super();
         openTicket();
     }
-    //Parameterized Constructor using a Work ticket object
+
+    //Parameterized Constructor which accepts WorkTicket as a parameter
     public ExtendedWorkTicket(WorkTicket ticket, boolean myOpen)
     {
         this.ticketNumber = ticket.ticketNumber;
